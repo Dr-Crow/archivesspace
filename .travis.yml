@@ -12,7 +12,8 @@ env:
   - SCREENSHOT_ON_ERROR=1
   - SELENIUM_CHROME=true
   matrix:
-  - DB=mysql TASK=travis:test
+  - DB=mysql TASK=travis:other:test
+  - DB=mysql TASK=travis:rails:test
   # - DB=mysql TASK=travis:selenium:staff TASK_OPTS="-Dcores=6 -Dgroups=1"
   # - DB=mysql TASK=travis:selenium:staff TASK_OPTS="-Dcores=6 -Dgroups=2"
   # - DB=mysql TASK=travis:selenium:staff TASK_OPTS="-Dcores=6 -Dgroups=3"
