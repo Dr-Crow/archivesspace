@@ -2,7 +2,6 @@ language: java
 jdk:
 - openjdk8
 - oraclejdk8
-- openjdk9
 - openjdk11
 matrix:
   fast_finish: true
@@ -12,6 +11,11 @@ env:
   - SCREENSHOT_ON_ERROR=1
   - SELENIUM_CHROME=true
   matrix:
+    include:
+    - jdk: openjdk9
+      before_install:
+        - rm "${JAVA_HOME}/lib/security/cacerts"
+        - ln -s /etc/ssl/certs/java/cacerts "${JAVA_HOME}/lib/security/cacerts"
   - DB=mysql TASK=travis:other:test
   - DB=mysql TASK=travis:rails:test
   # - DB=mysql TASK=travis:selenium:staff TASK_OPTS="-Dcores=6 -Dgroups=1"
